@@ -1,4 +1,4 @@
-Note travail : 95%<br/>
+Moyenne notes travaux : 95%<br/>
 Exemples de code :
 - [TP1Carp/principal.cpp](/TP1/TP1Carp/principal.cpp)
 - [TP2Carp/listeentiers.cpp](/TP2/TP2Carp/listeentiers.cpp)
