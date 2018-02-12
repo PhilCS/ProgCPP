@@ -1,13 +1,13 @@
 /******************************************************************************
-	Fichier:		utilitaires.h
+    Fichier:        utilitaires.h
 
-	Bibliothèque:	Utilitaires
+    BibliothÃ¨que:   Utilitaires
 
-	Auteur:			José Consola
+    Auteur:         JosÃ© Consola
 
-	Utilité:		Bibliothèque qui fournit des fonctions de base dans le but
-					d'éviter d'intégrer des bibliothèques plus volumineuses
-					et/ou qui contiennent des fonctions hors standard.
+    UtilitÃ©:        BibliothÃ¨que qui fournit des fonctions de base dans le but
+                    d'Ã©viter d'intÃ©grer des bibliothÃ¨ques plus volumineuses
+                    et/ou qui contiennent des fonctions hors standard.
 ******************************************************************************/
 #ifndef __UTILITAIRES_H
 #define __UTILITAIRES_H
@@ -15,7 +15,7 @@
 
 bool EstPremier (unsigned int uiNombre);
 void CopierChaine (char * szDest, const char * szSource,
-				   unsigned int uiNbCars);
+                   unsigned int uiNbCars);
 int ComparerChaines (const char * szChaine1, const char * szChaine2);
 unsigned int GetLongueurChaine (const char * szSource);
 

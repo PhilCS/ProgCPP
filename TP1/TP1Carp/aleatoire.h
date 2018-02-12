@@ -1,10 +1,10 @@
 /******************************************************************************
-	Fichier:	aleatoire.h
+    Fichier:    aleatoire.h
 
-	Auteur:		José Consola
+    Auteur:     JosÃ© Consola
 
-	Utilité:	Bibliothèque contenant une fonction destinée à générer des
-				nombres pseudo-aléatoires.
+    UtilitÃ©:    BibliothÃ¨que contenant une fonction destinÃ©e Ã  gÃ©nÃ©rer des
+                nombres pseudo-alÃ©atoires.
 ******************************************************************************/
 #ifndef __ALEATOIRE_H
 #define __ALEATOIRE_H

@@ -1,155 +1,155 @@
 /******************************************************************************
-	Fichier:	vecteurentiers.cpp
-	
-	Utilité:	Implémentation de la bibliothèque CVecteurEntiers pour la 
-				gestion de vecteurs dynamiques virtuels à l'aide d'objets
+    Fichier:    vecteurentiers.cpp
 
-	Auteur:		Philippe Carpentier-Savard
+    UtilitÃ©:    ImplÃ©mentation de la bibliothÃ¨que CVecteurEntiers pour la
+                gestion de vecteurs dynamiques virtuels Ã  l'aide d'objets
+
+    Auteur:     Philippe Carpentier-Savard
 ******************************************************************************/
 #include "vecteurentiers.h"
 
 
 /******************************************************************************
-	Constructeur permettant d'initialiser les attributs.
+    Constructeur permettant d'initialiser les attributs.
 ******************************************************************************/
 CVecteurEntiers :: CVecteurEntiers ()
 : m_uiNbElements(0), m_piLesElements(0) {}
 
 
 /******************************************************************************
-	Constructeur permettant de copier les valeurs du vecteur de l'objet passé 
-	en entrée dans le vecteur de l'objet courant
+    Constructeur permettant de copier les valeurs du vecteur de l'objet passÃ©
+    en entrÃ©e dans le vecteur de l'objet courant
 ******************************************************************************/
 CVecteurEntiers :: CVecteurEntiers (const CVecteurEntiers & desEntiers)
 : m_piLesElements(0)
 {
-	* this = desEntiers;
+    * this = desEntiers;
 }
 
 
 /******************************************************************************
-	Destructeur libérant la mémoire allouée pour le vecteur, et assignant à 
-	celui-ci la valeur 0
+    Destructeur libÃ©rant la mÃ©moire allouÃ©e pour le vecteur, et assignant Ã 
+    celui-ci la valeur 0
 ******************************************************************************/
 CVecteurEntiers :: ~CVecteurEntiers ()
 {
-	if (m_piLesElements != 0)
-	{
-		delete[] m_piLesElements;
-		m_piLesElements = 0;
-		m_uiNbElements = 0;
-	}
+    if (m_piLesElements != 0)
+    {
+        delete[] m_piLesElements;
+        m_piLesElements = 0;
+        m_uiNbElements = 0;
+    }
 }
 
 
 /******************************************************************************
-	Méthode permettant d'insérer un entier à la fin du vecteur
+    MÃ©thode permettant d'insÃ©rer un entier Ã  la fin du vecteur
 ******************************************************************************/
 void CVecteurEntiers :: Ajouter (int iEntier)
 {
-	if (m_piLesElements == 0)
-	{
-		m_piLesElements = new int[1];
-		m_piLesElements[0] = iEntier;
-	}
-	else
-	{
-		unsigned int uiIndice;
+    if (m_piLesElements == 0)
+    {
+        m_piLesElements = new int[1];
+        m_piLesElements[0] = iEntier;
+    }
+    else
+    {
+        unsigned int uiIndice;
 
-		int * piNouveauVecteur = new int[m_uiNbElements + 1];
+        int * piNouveauVecteur = new int[m_uiNbElements + 1];
 
-		for (uiIndice = 0; uiIndice < m_uiNbElements; ++uiIndice)
-			piNouveauVecteur[uiIndice] = m_piLesElements[uiIndice];
+        for (uiIndice = 0; uiIndice < m_uiNbElements; ++uiIndice)
+            piNouveauVecteur[uiIndice] = m_piLesElements[uiIndice];
 
-		piNouveauVecteur[uiIndice] = iEntier;
+        piNouveauVecteur[uiIndice] = iEntier;
 
-		delete[] m_piLesElements;
-		m_piLesElements = piNouveauVecteur;
-	}
+        delete[] m_piLesElements;
+        m_piLesElements = piNouveauVecteur;
+    }
 
-	m_uiNbElements++;
+    m_uiNbElements++;
 }
 
 
 /******************************************************************************
-	Méthode permettant de retirer du vecteur l'entier à l'indice passé en 
-	entrée
+    MÃ©thode permettant de retirer du vecteur l'entier Ã  l'indice passÃ© en
+    entrÃ©e
 ******************************************************************************/
 bool CVecteurEntiers :: Retirer (unsigned int uiIndiceSuppr)
 {
-	unsigned int uiIndice;
-	int * piNouveauVecteur;
+    unsigned int uiIndice;
+    int * piNouveauVecteur;
 
-	if (uiIndiceSuppr >= m_uiNbElements)
-		return false;
+    if (uiIndiceSuppr >= m_uiNbElements)
+        return false;
 
-	if (m_uiNbElements == 1)
-	{
-		delete[] m_piLesElements;
-		m_piLesElements = 0;
-		m_uiNbElements = 0;
-		return true;
-	}
+    if (m_uiNbElements == 1)
+    {
+        delete[] m_piLesElements;
+        m_piLesElements = 0;
+        m_uiNbElements = 0;
+        return true;
+    }
 
-	piNouveauVecteur = new int[m_uiNbElements - 1];
+    piNouveauVecteur = new int[m_uiNbElements - 1];
 
-	for (uiIndice = 0; uiIndice < m_uiNbElements - 1; uiIndice++)
-		piNouveauVecteur[uiIndice] = m_piLesElements[uiIndice +
-													 (uiIndice < uiIndiceSuppr
-													  ? 0 : 1)];
+    for (uiIndice = 0; uiIndice < m_uiNbElements - 1; uiIndice++)
+        piNouveauVecteur[uiIndice] = m_piLesElements[uiIndice +
+                                                     (uiIndice < uiIndiceSuppr
+                                                      ? 0 : 1)];
 
-	delete[] m_piLesElements;
-	m_piLesElements = piNouveauVecteur;
+    delete[] m_piLesElements;
+    m_piLesElements = piNouveauVecteur;
 
-	m_uiNbElements--;
-	return true;
+    m_uiNbElements--;
+    return true;
 }
 
 
 /******************************************************************************
-	Fonction retournant le nombre d'entiers contenu dans le vecteur
+    Fonction retournant le nombre d'entiers contenu dans le vecteur
 ******************************************************************************/
 unsigned int CVecteurEntiers :: NbElements () const
 {
-	return m_uiNbElements;
+    return m_uiNbElements;
 }
 
 
 /******************************************************************************
-	Opérateur permettant de retourner l'entier situé à l'indice passé en entrée
+    OpÃ©rateur permettant de retourner l'entier situÃ© Ã  l'indice passÃ© en entrÃ©e
 ******************************************************************************/
 int CVecteurEntiers :: operator [] (unsigned int uiIndice)
 {
-	if (uiIndice >= m_uiNbElements)
-		throw "Indice en dehors de la plage.";
+    if (uiIndice >= m_uiNbElements)
+        throw "Indice en dehors de la plage.";
 
-	return m_piLesElements[uiIndice];
+    return m_piLesElements[uiIndice];
 }
 
 
 /******************************************************************************
-	Opérateur permettant de copier tous les entiers du vecteur de l'objet passé
-	en entrée vers le vecteur de l'objet courant
+    OpÃ©rateur permettant de copier tous les entiers du vecteur de l'objet passÃ©
+    en entrÃ©e vers le vecteur de l'objet courant
 ******************************************************************************/
-const CVecteurEntiers & CVecteurEntiers :: operator = (const CVecteurEntiers & 
-													   desEntiers)
+const CVecteurEntiers & CVecteurEntiers :: operator = (const CVecteurEntiers &
+                                                       desEntiers)
 {
-	unsigned int uiIndice;
+    unsigned int uiIndice;
 
-	if (m_piLesElements != 0)
-		delete[] m_piLesElements;
+    if (m_piLesElements != 0)
+        delete[] m_piLesElements;
 
-	m_uiNbElements = desEntiers.m_uiNbElements;
+    m_uiNbElements = desEntiers.m_uiNbElements;
 
-	if (m_uiNbElements > 0)
-	{
-		m_piLesElements = new int[m_uiNbElements];
+    if (m_uiNbElements > 0)
+    {
+        m_piLesElements = new int[m_uiNbElements];
 
-		for (uiIndice = 0; uiIndice < m_uiNbElements; uiIndice++)
-			m_piLesElements[uiIndice] = desEntiers.m_piLesElements[uiIndice];
-	}
-	else
-		m_piLesElements = 0;
+        for (uiIndice = 0; uiIndice < m_uiNbElements; uiIndice++)
+            m_piLesElements[uiIndice] = desEntiers.m_piLesElements[uiIndice];
+    }
+    else
+        m_piLesElements = 0;
 
-	return * this;
+    return * this;
 }
